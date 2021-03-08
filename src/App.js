@@ -22,6 +22,7 @@ function App() {
         setTodos(todoLocal);
       }
     };
+    getLocalTodos();
   }, []);
 
 //run when there is changes
@@ -29,6 +30,7 @@ function App() {
     const saveLocalTodos = () => {
       localStorage.setItem("todos", JSON.stringify(todos));
     };
+    
     const filterHandler = () => {
       switch (status) {
         case "completed":
@@ -41,9 +43,11 @@ function App() {
           setFilteredTodos(todos);
           break;
       };
+     
     };
-  
-   
+    saveLocalTodos();
+    filterHandler();
+    
   }, [todos, status]);
  
 
